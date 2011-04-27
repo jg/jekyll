@@ -79,7 +79,7 @@ module Jekyll
       self.read
       self.generate
       self.render
-      self.cleanup
+      # self.cleanup
       self.write
     end
 
