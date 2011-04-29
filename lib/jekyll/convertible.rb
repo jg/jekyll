@@ -84,11 +84,14 @@ module Jekyll
       while layout
         payload = payload.deep_merge({"content" => self.output, "page" => layout.data})
 
+        layout.transform
+
         begin
           self.output = Liquid::Template.parse(layout.content).render(payload, info)
         rescue => e
           puts "Liquid Exception: #{e.message} in #{self.data["layout"]}"
         end
+
 
         layout = layouts[layout.data["layout"]]
       end

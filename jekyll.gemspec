@@ -60,6 +60,7 @@ Gem::Specification.new do |s|
     lib/jekyll/converters/identity.rb
     lib/jekyll/converters/markdown.rb
     lib/jekyll/converters/textile.rb
+    lib/jekyll/converters/haml.rb
     lib/jekyll/convertible.rb
     lib/jekyll/core_ext.rb
     lib/jekyll/errors.rb
