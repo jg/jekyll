@@ -48,6 +48,20 @@ module Jekyll
     def setup
       require 'classifier' if self.lsi
 
+      if self.config['haml']
+        begin
+          require 'haml'
+          # require default haml_helpers
+          require 'jekyll/haml_helpers'
+          # require user haml_helpers
+          helpers = File.join(source, '_helpers.rb')
+          require helpers if File.exist?(helpers)
+          puts 'Haml helpers enabled'
+        rescue LoadError
+          puts 'You must have the haml gem installed first'
+        end
+      end
+
       # If safe mode is off, load in any ruby files under the plugins
       # directory.
       unless self.safe
