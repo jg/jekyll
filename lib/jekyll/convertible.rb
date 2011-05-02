@@ -10,6 +10,8 @@
 #   self.output=
 module Jekyll
   module Convertible
+    @has_transformed_content = false
+
     # Return the contents as a string
     def to_s
       self.content || ''
@@ -40,7 +42,10 @@ module Jekyll
     #
     # Returns nothing
     def transform
-      self.content = converter.convert(self.content)
+      if !@has_transformed_content
+        self.content = converter.convert(self.content)
+        @has_transformed_content = true
+      end
     end
 
     # Determine the extension depending on content_type
